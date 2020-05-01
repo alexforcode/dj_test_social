@@ -1,4 +1,4 @@
-{% extends 'account/_base.html' %}
+{% extends '_base.html' %}
 
 {% block title %}Create an account{% endblock %}
 
@@ -9,6 +9,6 @@
     <form action="." method="post">
         {{ user_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Create account"></p>
+        <p><input class="btn btn-outline-primary" type="submit" value="Create account"></p>
     </form>
 {% endblock %}

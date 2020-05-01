@@ -1,4 +1,4 @@
-{% extends 'account/_base.html' %}
+{% extends '_base.html' %}
 
 {% block title %}Edit your account{% endblock %}
 
@@ -10,6 +10,6 @@
         {{ user_form.as_p }}
         {{ profile_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Save changes"></p>
+        <p><input class="btn btn-outline-primary" type="submit" value="Save changes"></p>
     </form>
 {% endblock %}
