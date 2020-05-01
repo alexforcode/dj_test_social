@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,13 +33,13 @@
                     </ul>
                 {% endif %}
 
-                <url class="nav navbar-nav ml-auto">
+                <ul class="nav navbar-nav ml-auto">
                     {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link active" href="{% url 'account:logout' %}">Logout</a></li>
                     {% else %}
                         <li class="nav-item"><a class="nav-link active" href="{% url 'account:login' %}">Log-in</a></li>
                     {% endif %}
-                </url>
+                </ul>
             </div>
         </nav>
     </div>
