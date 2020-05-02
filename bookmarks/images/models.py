@@ -18,6 +18,8 @@ class Image(models.Model):
                                         related_name='images_liked',
                                         blank=True)
 
+    objects = models.Manager()
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
