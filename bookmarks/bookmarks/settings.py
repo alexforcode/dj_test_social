@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third party
     'social_django',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
