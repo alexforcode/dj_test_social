@@ -25,7 +25,7 @@
                             <a class="nav-link" href="{% url 'account:dashboard' %}">Dashboard</a>
                         </li>
                         <li class="nav-item {% if section == 'images' %}active{% endif %}">
-                            <a class="nav-link" href="#">Images</a>
+                            <a class="nav-link" href="{% url 'images:list' %}">Images</a>
                         </li>
                         <li class="nav-item {% if section == 'people' %}active{% endif %}">
                             <a class="nav-link" href="#">People</a>
