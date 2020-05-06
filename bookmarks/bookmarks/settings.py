@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['test-site.com',
 INSTALLED_APPS = [
     # own
     'account',
+    'actions',
     'images',
     # built-ins
     'django.contrib.admin',
