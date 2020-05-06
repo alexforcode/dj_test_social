@@ -7,13 +7,24 @@ from django.views.decorators.http import require_POST
 
 from .forms import ProfileEditForm, UserEditForm, UserRegistrationForm
 from .models import Profile, Contact
-from ..actions.utils import create_action
-from ..common.decorators import ajax_required
+from actions.models import Action
+from actions.utils import create_action
+from common.decorators import ajax_required
 
 
 @login_required
 def dashboard(request):
-    context = {'section': 'dashboard'}
+    actions = Action.objects.exclude(user=request.user)
+    following_ids = request.user.following.values_list('id', flat=True)
+
+    if following_ids:
+        actions = actions.filter(user_id__in=following_ids)
+    actions = actions.select_related('user', 'user__profile').prefetch_related('target')[:10]
+
+    context = {
+        'section': 'dashboard',
+        'actions': actions
+    }
     return render(request, 'account/dashboard.html', context)
 
 

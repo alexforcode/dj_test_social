@@ -7,8 +7,8 @@ from django.views.decorators.http import require_POST
 
 from .forms import ImageCreateForm
 from .models import Image
-from ..actions.utils import create_action
-from ..common.decorators import ajax_required
+from actions.utils import create_action
+from common.decorators import ajax_required
 
 
 @login_required
