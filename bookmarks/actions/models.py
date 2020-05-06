@@ -15,5 +15,7 @@ class Action(models.Model):
     target = GenericForeignKey('target_ct', 'target_id')
     created = models.DateTimeField(auto_now_add=True, db_index=True)
 
+    objects = models.Manager()
+
     class Meta:
         ordering = ('-created',)
