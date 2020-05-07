@@ -175,3 +175,9 @@ LOGOUT_URL = 'account:logout'
 
 # Development e-mail backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Redis
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
