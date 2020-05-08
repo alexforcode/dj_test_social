@@ -45,6 +45,7 @@ def image_create(request):
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
     total_views = r.incr(f'image:{image.id}:views')
+    r.zincrby('image_ranking', 1, image.id)
 
     context = {
         'section': 'images',
@@ -99,3 +100,17 @@ def image_list(request):
         return render(request, 'images/image/list_ajax.html', context)
 
     return render(request, 'images/image/list.html', context)
+
+
+@login_required
+def image_ranking(request):
+    image_rank = r.zrange('image_ranking', 0, -1, desc=True)[:10]
+    image_rank_ids = [int(id) for id in image_rank]
+    most_viewed = list(Image.objects.filter(id__in=image_rank_ids))
+    most_viewed.sort(key=lambda x: image_rank_ids.index(x.id))
+
+    context = {
+        'section': 'images',
+        'most_viewed': most_viewed
+    }
+    return render(request, 'images/image/ranking.html', context)
